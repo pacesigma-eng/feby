@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Sahabatku 🌸</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #ffdde1 0%, #ffc3d4 25%, #e0c3fc 60%, #c2e9fb 100%);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+  }
+
+  @keyframes gradientMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Bunga Besar Bergerak */
+  .flower {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    z-index: 0;
+    pointer-events: none;
+    animation: flowerRotate 40s linear infinite, flowerPulse 6s ease-in-out infinite;
+    filter: blur(1px);
+    opacity: 0.85;
+  }
+
+  @keyframes flowerRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @keyframes flowerPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    50%      { transform: translate(-50%, -50%) scale(1.08) rotate(180deg); }
+  }
+
+  /* Kelopak bunga berjatuhan */
+  .petal {
+    position: fixed;
+    top: -50px;
+    font-size: 28px;
+    animation: fall linear infinite;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.9;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-50px) rotate(0deg) translateX(0);
+      opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+      transform: translateY(110vh) rotate(720deg) translateX(80px);
+      opacity: 0;
+    }
+  }
+
+  /* Card utama */
+  .card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 50px 40px;
+    max-width: 620px;
+    width: 100%;
+    box-shadow: 
+      0 20px 60px rgba(200, 100, 150, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    animation: cardAppear 1.2s ease-out;
+    text-align: center;
+  }
+
+  @keyframes cardAppear {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .emoji-top {
+    font-size: 56px;
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 4px 10px rgba(255, 105, 180, 0.4));
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50%      { transform: translateY(-12px) rotate(5deg); }
+  }
+
+  h1 {
+    font-size: 34px;
+    background: linear-gradient(90deg, #ff6b9d, #c44dff, #6b8cff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textShine 4s linear infinite;
+    margin-bottom: 8px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  @keyframes textShine {
+    to { background-position: 200% center; }
+  }
+
+  .subtitle {
+    color: #8a5a8a;
+    font-size: 14px;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff6b9d, transparent);
+    margin: 0 auto 30px;
+    border-radius: 3px;
+  }
+
+  .message {
+    color: #4a2a4a;
+    font-size: 17px;
+    line-height: 1.9;
+    text-align: left;
+    margin-bottom: 25px;
+    padding: 0 5px;
+  }
+
+  .message p {
+    margin-bottom: 16px;
+  }
+
+  .highlight {
+    background: linear-gradient(120deg, #ffd1e0 0%, #ffd1e0 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 88%;
+    padding: 2px 4px;
+    font-weight: 600;
+    color: #c44d80;
+  }
+
+  .signature {
+    font-style: italic;
+    color: #8a5a8a;
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  .signature strong {
+    color: #ff6b9d;
+    font-size: 18px;
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+  }
+
+  /* Tombol */
+  .btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 38px;
+    background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(196, 77, 255, 0.5);
+  }
+
+  .btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Popup kecil muncul setelah klik tombol */
+  .popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    padding: 20px;
+  }
+
+  .popup.show { display: flex; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .popup-content {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 25px;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+
+  .popup-content h2 {
+    color: #ff6b9d;
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+
+  .popup-content p {
+    color: #4a2a4a;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .card { padding: 35px 22px; border-radius: 22px; }
+    h1 { font-size: 26px; }
+    .flower { width: 480px; height: 480px; }
+    .message { font-size: 15px; line-height: 1.8; }
+    .emoji-top { font-size: 44px; }
+    .petal { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- BUNGA BESAR BERGERAK -->
+  <svg class="flower" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="petalGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fff0f6"/>
+        <stop offset="60%" stop-color="#ffb3d1"/>
+        <stop offset="100%" stop-color="#ff6b9d"/>
+      </radialGradient>
+      <radialGradient id="centerGrad">
+        <stop offset="0%" stop-color="#fff8b0"/>
+        <stop offset="100%" stop-color="#ffb800"/>
+      </radialGradient>
+    </defs>
+    <g transform="translate(100,100)">
+      <!-- 8 kelopak -->
+      <g>
+        <ellipse cx="0" cy="-45" rx="18" ry="45" fill="url(#petalGrad)" opacity="0.9"/>
+        <ellipse cx="0" cy="-45" rx="18" ry="45" fill="url(#petalGrad)" opacity="0.9" transform="rotate(45)"/>
+        <ellipse cx="0" cy="-45" rx="18" ry="45" fill="url(#petalGrad)" opacity="0.9" transform="rotate(90)"/>
+        <ellipse cx="0" cy="-45" rx="18" ry="45" fill="url(#petalGrad)" opacity="0.9" transform="rotate(135)"/>
+        <ellipse cx="0" cy="-45" rx="18" ry="45" fill="url(#petalGrad)" opacity="0.9" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-45" rx="18" ry="45" fill="url(#petalGrad)" opacity="0.9" transform="rotate(225)"/>
+        <ellipse cx="0" cy="-45" rx="18" ry="45" fill="url(#petalGrad)" opacity="0.9" transform="rotate(270)"/>
+        <ellipse cx="0" cy="-45" rx="18" ry="45" fill="url(#petalGrad)" opacity="0.9" transform="rotate(315)"/>
+      </g>
+      <!-- Pusat bunga -->
+      <circle r="22" fill="url(#centerGrad)"/>
+      <circle r="14" fill="#ffe066" opacity="0.7"/>
+    </g>
+  </svg>
+
+  <!-- KARTU PESAN -->
+  <div class="card">
+    <div class="emoji-top">🌸</div>
+    <h1>Untuk Sahabatku</h1>
+    <div class="subtitle">Just Friend · Forever</div>
+    <div class="divider"></div>
+
+    <div class="message">
+      <p>Hai kamu,</p>
+      <p>
+        Terima kasih ya sudah jadi <span class="highlight">teman baikku</span> selama ini.
+        Bukan lebih, bukan kurang — cuma sahabat yang selalu ada.
+      </p>
+      <p>
+        Makasih untuk tawa di saat aku sedih, untuk telinga yang selalu siap dengar ceritaku,
+        dan untuk <span class="highlight">kehadiranmu</span> yang nggak pernah aku minta tapi selalu ada.
+      </p>
+      <p>
+        Aku nggak butuh sesuatu yang lebih dari ini. Cukup kamu jadi kamu —
+        sahabat yang tulus, jujur, dan apa adanya.
+      </p>
+      <p>
+        Semoga persahabatan kita awet sampai kapan pun. 🌷
+      </p>
+
+      <div class="signature">
+        Dari sahabatmu,
+        <strong>— Aku —</strong>
+      </div>
+    </div>
+
+    <button class="btn" onclick="showPopup()">💌 Buka Pesan</button>
+  </div>
+
+  <!-- POPUP -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>💐 Pesan Kecil</h2>
+      <p>
+        "Persahabatan itu bukan tentang siapa yang paling lama bersama,
+        tapi siapa yang paling <b>tulus</b> saat menemani."
+      </p>
+      <p>Tetaplah jadi sahabatku ya 🌸</p>
+      <button class="btn" onclick="closePopup()">Tutup</button>
+    </div>
+  </div>
+
+<script>
+  // Kelopak bunga berjatuhan
+  const petalEmojis = ['🌸', '🌷', '🌺', '💮', '🏵️', '❀', '✿', '❁'];
+  const petalCount = 18;
+
+  for (let i = 0; i < petalCount; i++) {
+    const p = document.createElement('div');
+    p.classList.add('petal');
+    p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.fontSize = (18 + Math.random() * 20) + 'px';
+    p.style.animationDuration = (6 + Math.random() * 8) + 's';
+    p.style.animationDelay = (Math.random() * 8) + 's';
+    p.style.opacity = 0.6 + Math.random() * 0.4;
+    document.body.appendChild(p);
+  }
+
+  function showPopup() {
+    document.getElementById('popup').classList.add('show');
+  }
+  function closePopup() {
+    document.getElementById('popup').classList.remove('show');
+  }
+
+  // Tutup popup kalau klik area luar
+  document.getElementById('popup').addEventListener('click', (e) => {
+    if (e.target.id === 'popup') closePopup();
+  });
+</script>
+</body>
+</html>
